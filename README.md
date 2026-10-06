@@ -1,8 +1,27 @@
 # Payment Requests API
 
-Staff submit payment requests (for example, to pay a supplier) and a manager approves or rejects them.
+A REST API for managing payment requests. Staff submit a request to pay for something (for example, a supplier invoice), and a manager approves or rejects it.
 
-Built with Python, FastAPI, SQLAlchemy and SQLite. Tests use pytest.
+## Features
+
+- Create a payment request with the requester's name, an amount and a description
+- List all requests, optionally filtered by status
+- Get a single request
+- Approve or reject a request, with a required reason for rejections
+- Clear JSON error messages and sensible status codes (400, 404, 409)
+
+## Business rules
+
+- The amount must be more than 0
+- Only Pending requests can be approved or rejected, so a request cannot be approved twice
+- Rejecting a request requires a reason
+
+## Built with
+
+- Python 3.12 and FastAPI
+- SQLAlchemy with SQLite (PostgreSQL can be used by setting `DATABASE_URL`)
+- Pydantic for input validation
+- pytest for automated tests (20 tests)
 
 ## Setup
 
